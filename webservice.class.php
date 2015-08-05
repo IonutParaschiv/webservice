@@ -5,8 +5,8 @@ require_once('utils/autoloader.php');
  */
 	class webservice{
 
-		public function sendVerification(){
-			email::sendVerification();
+		public function sendVerification($email){
+			email::sendVerification($email);
 		}
 
 	}

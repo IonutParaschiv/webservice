@@ -1,15 +1,25 @@
 <?php 
 
 class email{
-	public function sendVerification(){
-		$to      = 'ionut@htd.ro';
+	public function sendVerification($email){
+
+		$code = security::randomCode(6);
+
+
+		$to      = $email;
 		$subject = 'the subject';
-		$message = 'Your confirmation code is: ';
+		$message = 'Your confirmation code is: '. "\r\n\r\n " . $code;
 		$headers = 'From: webmaster@bookfy.com' . "\r\n" .
 		    'Reply-To: webmaster@bookfy.com' . "\r\n" .
 		    'X-Mailer: PHP/' . phpversion();
 
-		mail($to, $subject, $message, $headers);
+		$DbResponse = db::saveValidationCode($code);
+
+		if($DbResponse){
+			mail($to, $subject, $message, $headers);
+		}
+
+
 	}
 }
 
