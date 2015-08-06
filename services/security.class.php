@@ -15,10 +15,16 @@ class security{
 		$valid = db::validateCode($code);
 
 		if($valid){
+
+			// db::expireCode($code);
 			return "true";
 		}else{
 			return "false";
 		}
+	}
+
+	function expireCode($code){
+		db::expireCode($code);
 	}
 }
 

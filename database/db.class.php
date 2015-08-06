@@ -54,6 +54,18 @@ const DATABASE_NAME = "bachelor";
             return false;
         }
     }
+    public function expireCode($code){
+        $conn = self::conn();
+        $status = 'expired';
+        $query = "UPDATE ".self::DATABASE_NAME.".validation SET status = :status WHERE validation.code = :code;";
+
+        $stmt = $conn->prepare($query);
+
+        $stmt->bindParam(":status", $status);
+        $stmt->bindParam(":code", $code);
+
+        $result = $stmt->execute();
+    }
 
 }
 

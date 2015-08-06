@@ -24,6 +24,16 @@ require_once('utils/autoloader.php');
 				echo $response;
 
 				break;
+			case 'expireCode':
+				$code = $_POST['code'];
+				
+				$web = new security();
+				
+				$response = $web->expireCode($code);
+
+				echo $response;
+
+				break;
 			
 			default:
 				# code...

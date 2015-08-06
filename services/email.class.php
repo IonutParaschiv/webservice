@@ -7,7 +7,7 @@ class email{
 
 
 		$to      = $email;
-		$subject = 'the subject';
+		$subject = 'Bookfy confirmation code';
 		$message = 'Your confirmation code is: '. "\r\n\r\n " . $code;
 		$headers = 'From: webmaster@bookfy.com' . "\r\n" .
 		    'Reply-To: webmaster@bookfy.com' . "\r\n" .
